@@ -10,11 +10,10 @@ import { SeparadorComponent } from './componentes/separador/separador.component'
   standalone: true,
   imports: [
     CommonModule,
-    RouterOutlet,
     ContainerComponent,
     CabecalhoComponent,
-    SeparadorComponent,
-  ],
+    SeparadorComponent
+],
   templateUrl: './app.component.html',
   styleUrl: './app.component.css',
 })
