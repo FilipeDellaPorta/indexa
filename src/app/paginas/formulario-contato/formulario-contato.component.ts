@@ -8,7 +8,7 @@ import {
   ReactiveFormsModule,
   Validators,
 } from '@angular/forms';
-import { RouterLink } from '@angular/router';
+import { Router, RouterLink } from '@angular/router';
 
 @Component({
   selector: 'app-formulario-contato',
@@ -26,7 +26,7 @@ import { RouterLink } from '@angular/router';
 export class FormularioContatoComponent {
   contatoForm!: FormGroup;
 
-  constructor() {
+  constructor(private router: Router) {
     this.contatoForm = new FormGroup({
       nome: new FormControl('', Validators.required),
       telefone: new FormControl('', Validators.required),
@@ -39,8 +39,8 @@ export class FormularioContatoComponent {
 
   salvarContato() {
     if (this.contatoForm.valid) {
-      console.log(this.contatoForm.value);
-      console.log(this.contatoForm.get('email')?.errors);
+      alert('Contato adicionado com sucesso!');
+      this.router.navigate(['/lista-contatos']);
     }
   }
 
