@@ -11,6 +11,7 @@ input {
   font-weight: 400;
   line-height: 150%;
 }
+
 .adicionar-contato {
   display: flex;
   justify-content: center;
