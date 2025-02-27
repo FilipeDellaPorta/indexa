@@ -54,6 +54,6 @@ export class FormularioContatoComponent implements OnInit {
   }
 
   cancelar() {
-    console.log('Submissão cancelada');
+    this.contatoForm.reset();
   }
 }

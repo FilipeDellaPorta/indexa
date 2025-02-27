@@ -7,12 +7,7 @@ import { CabecalhoComponent } from '../../componentes/cabecalho/cabecalho.compon
 import { SeparadorComponent } from '../../componentes/separador/separador.component';
 import { ContatoComponent } from '../../componentes/contato/contato.component';
 import { ContatoService } from '../../services/contato.service';
-
-interface Contato {
-  id: number;
-  nome: string;
-  telefone: string;
-}
+import { Contato } from '../../componentes/contato/contato';
 
 @Component({
   selector: 'app-lista-contatos',
