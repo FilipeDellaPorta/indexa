@@ -9,6 +9,7 @@ import {
   Validators,
 } from '@angular/forms';
 import { Router, RouterLink } from '@angular/router';
+import { ContatoService } from '../../services/contato.service';
 
 @Component({
   selector: 'app-formulario-contato',
@@ -26,7 +27,7 @@ import { Router, RouterLink } from '@angular/router';
 export class FormularioContatoComponent implements OnInit {
   contatoForm!: FormGroup;
 
-  constructor(private router: Router) {}
+  constructor(private router: Router, private contatoService: ContatoService) {}
 
   ngOnInit() {
     this.inicializarFormulario();
@@ -45,6 +46,8 @@ export class FormularioContatoComponent implements OnInit {
 
   salvarContato() {
     if (this.contatoForm.valid) {
+      const novoContato = this.contatoForm.value;
+      this.contatoService.salvarContato(novoContato);
       alert('Contato adicionado com sucesso!');
       this.router.navigate(['/lista-contatos']);
     }
