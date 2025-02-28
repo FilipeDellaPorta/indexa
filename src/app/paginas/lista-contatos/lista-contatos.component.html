@@ -9,7 +9,7 @@
 
   <section class="adicionar-contato">
     <button routerLink="/formulario">
-      <img src="assets/plus.png" alt="plus">
+      <img src="assets/plus.png" alt="plus" />
       <span>Adicionar contato</span>
     </button>
   </section>
@@ -22,8 +22,7 @@
   <app-contato
     [nome]="contato.nome"
     [telefone]="contato.telefone"
+    [id]="contato.id!"
   ></app-contato>
   } }
 </app-container>
-
-<app-perfil-contato></app-perfil-contato>
