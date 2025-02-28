@@ -1,8 +1,8 @@
-import { Component } from '@angular/core';
+import { Component, OnInit } from '@angular/core';
 import { CommonModule } from '@angular/common';
 import { ContainerComponent } from '../../componentes/container/container.component';
 import { Contato } from '../../componentes/contato/contato';
-import { RouterLink } from '@angular/router';
+import { ActivatedRoute, RouterLink } from '@angular/router';
 
 @Component({
   selector: 'app-perfil-contato',
@@ -11,7 +11,7 @@ import { RouterLink } from '@angular/router';
   templateUrl: './perfil-contato.component.html',
   styleUrl: './perfil-contato.component.css',
 })
-export class PerfilContatoComponent {
+export class PerfilContatoComponent implements OnInit {
   contato: Contato = {
     id: 0,
     nome: 'dev',
@@ -20,4 +20,10 @@ export class PerfilContatoComponent {
     aniversario: '12/10/1990',
     redes: '',
   };
+
+  constructor(private activatedRoute: ActivatedRoute) {}
+
+  ngOnInit() {
+    this.activatedRoute.snapshot.paramMap.get('id');
+  }
 }
