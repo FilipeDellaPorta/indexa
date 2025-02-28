@@ -3,6 +3,7 @@ import { CommonModule } from '@angular/common';
 import { ContainerComponent } from '../../componentes/container/container.component';
 import { Contato } from '../../componentes/contato/contato';
 import { ActivatedRoute, RouterLink } from '@angular/router';
+import { ContatoService } from '../../services/contato.service';
 
 @Component({
   selector: 'app-perfil-contato',
@@ -14,16 +15,24 @@ import { ActivatedRoute, RouterLink } from '@angular/router';
 export class PerfilContatoComponent implements OnInit {
   contato: Contato = {
     id: 0,
-    nome: 'dev',
+    nome: '',
     telefone: '',
-    email: 'dev@email.com',
-    aniversario: '12/10/1990',
+    email: '',
+    aniversario: '',
     redes: '',
   };
 
-  constructor(private activatedRoute: ActivatedRoute) {}
+  constructor(
+    private activatedRoute: ActivatedRoute,
+    private contatoService: ContatoService
+  ) {}
 
   ngOnInit() {
-    this.activatedRoute.snapshot.paramMap.get('id');
+    const id = this.activatedRoute.snapshot.paramMap.get('id');
+    if (id) {
+      this.contatoService.buscarPorId(parseInt(id)).subscribe((contato) => {
+        this.contato = contato;
+      });
+    }
   }
 }
