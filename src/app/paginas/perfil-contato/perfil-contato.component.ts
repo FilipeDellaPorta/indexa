@@ -4,11 +4,19 @@ import { ContainerComponent } from '../../componentes/container/container.compon
 import { Contato } from '../../componentes/contato/contato';
 import { ActivatedRoute, Router, RouterLink } from '@angular/router';
 import { ContatoService } from '../../services/contato.service';
+import { SeparadorComponent } from '../../componentes/separador/separador.component';
+import { ContatoComponent } from '../../componentes/contato/contato.component';
 
 @Component({
   selector: 'app-perfil-contato',
   standalone: true,
-  imports: [CommonModule, ContainerComponent, RouterLink],
+  imports: [
+    CommonModule,
+    ContainerComponent,
+    RouterLink,
+    SeparadorComponent,
+    ContatoComponent,
+  ],
   templateUrl: './perfil-contato.component.html',
   styleUrl: './perfil-contato.component.css',
 })
@@ -36,6 +44,10 @@ export class PerfilContatoComponent implements OnInit {
         this.contato = contato;
       });
     }
+  }
+
+  editarContato() {
+    this.router.navigate(['/formulario', this.contato.id]);
   }
 
   excluirContato() {
